@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+[dir="rtl"] body {
+  font-family: 'Almarai', sans-serif;
+}
+
+.font-arabic {
+  font-family: 'Almarai', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}

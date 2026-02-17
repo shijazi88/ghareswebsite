@@ -1,6 +1,7 @@
-import React from 'react';
-import { Leaf, Twitter, Facebook, Instagram, Mail } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+"use client";
+
+import { Leaf, Twitter, Facebook, Instagram, Mail } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Footer: React.FC = () => {
   const { t } = useLanguage();
@@ -14,9 +15,7 @@ export const Footer: React.FC = () => {
               <Leaf className="h-8 w-8 text-green-500 transform rtl:scale-x-[-1]" />
               <span className="text-2xl font-bold text-white">Ghares</span>
             </div>
-            <p className="text-base text-stone-400">
-              {t.footer.tagline}
-            </p>
+            <p className="text-base text-stone-400">{t.footer.tagline}</p>
             <div className="flex space-x-6 rtl:space-x-reverse">
               <a href="#" className="text-stone-400 hover:text-green-500">
                 <span className="sr-only">Facebook</span>
@@ -35,30 +34,71 @@ export const Footer: React.FC = () => {
           <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold text-stone-200 tracking-wider uppercase">{t.footer.solutions}</h3>
+                <h3 className="text-sm font-semibold text-stone-200 tracking-wider uppercase">
+                  {t.footer.solutions}
+                </h3>
                 <ul className="mt-4 space-y-4">
-                  <li><a href="#" className="text-base hover:text-white">{t.footer.forInitiators}</a></li>
-                  <li><a href="#" className="text-base hover:text-white">{t.footer.forPlanters}</a></li>
-                  <li><a href="#" className="text-base hover:text-white">{t.footer.corporate}</a></li>
-                  <li><a href="#" className="text-base hover:text-white">{t.footer.certificates}</a></li>
+                  <li>
+                    <a href="#" className="text-base hover:text-white">
+                      {t.footer.forInitiators}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-base hover:text-white">
+                      {t.footer.forPlanters}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-base hover:text-white">
+                      {t.footer.corporate}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-base hover:text-white">
+                      {t.footer.certificates}
+                    </a>
+                  </li>
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold text-stone-200 tracking-wider uppercase">{t.footer.support}</h3>
+                <h3 className="text-sm font-semibold text-stone-200 tracking-wider uppercase">
+                  {t.footer.support}
+                </h3>
                 <ul className="mt-4 space-y-4">
-                  <li><a href="#" className="text-base hover:text-white">{t.footer.helpCenter}</a></li>
-                  <li><a href="#" className="text-base hover:text-white">{t.footer.regions}</a></li>
-                  <li><a href="#" className="text-base hover:text-white">{t.footer.privacy}</a></li>
-                  <li><a href="#" className="text-base hover:text-white">{t.footer.contact}</a></li>
+                  <li>
+                    <a href="#" className="text-base hover:text-white">
+                      {t.footer.helpCenter}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-base hover:text-white">
+                      {t.footer.regions}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-base hover:text-white">
+                      {t.footer.privacy}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-base hover:text-white">
+                      {t.footer.contact}
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
             <div className="md:grid md:grid-cols-1 md:gap-8">
               <div>
-                 <h3 className="text-sm font-semibold text-stone-200 tracking-wider uppercase">{t.footer.contact}</h3>
-                 <ul className="mt-4 space-y-4">
-                    <li className="flex items-center"><Mail className="h-5 w-5 me-2 text-green-500" /> support@ghares.com</li>
-                 </ul>
+                <h3 className="text-sm font-semibold text-stone-200 tracking-wider uppercase">
+                  {t.footer.contact}
+                </h3>
+                <ul className="mt-4 space-y-4">
+                  <li className="flex items-center">
+                    <Mail className="h-5 w-5 me-2 text-green-500" />{" "}
+                    support@ghares.com
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

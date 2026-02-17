@@ -1,24 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Send, Bot, Loader2, MessageSquare } from 'lucide-react';
-import { getEcoAdvice } from '../services/geminiService';
-import { ChatMessage } from '../types';
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+import { Send, Bot, Loader2, MessageSquare } from "lucide-react";
+import { getEcoAdvice } from "@/services/geminiService";
+import { ChatMessage } from "@/types";
 
 export const EcoAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      id: 'welcome',
-      role: 'model',
-      text: 'Hello! I am the Ghares Eco-Advisor. Ask me about suitable plants for your region or how our platform works!',
-      timestamp: Date.now()
-    }
+      id: "welcome",
+      role: "model",
+      text: "Hello! I am the Ghares Eco-Advisor. Ask me about suitable plants for your region or how our platform works!",
+      timestamp: Date.now(),
+    },
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -30,25 +32,25 @@ export const EcoAssistant: React.FC = () => {
 
     const userMsg: ChatMessage = {
       id: Date.now().toString(),
-      role: 'user',
+      role: "user",
       text: input,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
 
-    setMessages(prev => [...prev, userMsg]);
-    setInput('');
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
     setIsLoading(true);
 
     const responseText = await getEcoAdvice(input);
 
     const botMsg: ChatMessage = {
       id: (Date.now() + 1).toString(),
-      role: 'model',
+      role: "model",
       text: responseText,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
 
-    setMessages(prev => [...prev, botMsg]);
+    setMessages((prev) => [...prev, botMsg]);
     setIsLoading(false);
   };
 
@@ -72,9 +74,22 @@ export const EcoAssistant: React.FC = () => {
           <Bot className="w-5 h-5" />
           <span className="font-semibold">Ghares Eco-Advisor</span>
         </div>
-        <button onClick={() => setIsOpen(false)} className="text-white/80 hover:text-white">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        <button
+          onClick={() => setIsOpen(false)}
+          className="text-white/80 hover:text-white"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
       </div>
@@ -84,13 +99,13 @@ export const EcoAssistant: React.FC = () => {
         {messages.map((msg) => (
           <div
             key={msg.id}
-            className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
               className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${
-                msg.role === 'user'
-                  ? 'bg-green-600 text-white rounded-br-none'
-                  : 'bg-white border border-stone-200 text-stone-800 rounded-bl-none shadow-sm'
+                msg.role === "user"
+                  ? "bg-green-600 text-white rounded-br-none"
+                  : "bg-white border border-stone-200 text-stone-800 rounded-bl-none shadow-sm"
               }`}
             >
               {msg.text}
@@ -114,7 +129,7 @@ export const EcoAssistant: React.FC = () => {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+            onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="Ask about trees, regions..."
             className="flex-1 border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
           />
