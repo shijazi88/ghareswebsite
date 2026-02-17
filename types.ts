@@ -21,10 +21,3 @@ export interface PlanterStats {
   activePlanters: number;
   regionsCovered: number;
 }
-
-export interface ChatMessage {
-  id: string;
-  role: 'user' | 'model';
-  text: string;
-  timestamp: number;
-}

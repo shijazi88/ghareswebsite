@@ -1,7 +1,6 @@
 "use client";
 
 import { Hero } from "@/components/Hero";
-import { EcoAssistant } from "@/components/EcoAssistant";
 import { User, Shovel, Award, Map, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -153,7 +152,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <EcoAssistant />
     </>
   );
 }
